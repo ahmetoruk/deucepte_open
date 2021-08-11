@@ -1,0 +1,9 @@
+include: package:lints/recommended.yaml
+linter:
+  rules:
+    sort_constructors_first: true
+
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
