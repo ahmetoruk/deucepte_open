@@ -1,7 +1,6 @@
 name: deu_api
 description: A new Flutter package project.
 version: 1.0.0
-author:
 homepage:
 
 environment:
@@ -12,20 +11,20 @@ dependencies:
   flutter:
     sdk: flutter
   dio: ^4.0.0
-  freezed_annotation: ^0.14.0
+  freezed_annotation: ^0.14.3
   html: ^0.15.0
   dio_cookie_manager: ^2.0.0
-  cookie_jar: ^3.0.0
-  shared_preferences: ^2.0.5
-  json_serializable: ^4.0.2
+  cookie_jar: ^3.0.1
+  shared_preferences: ^2.0.8
+  json_serializable: ^5.0.2
   
   
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner: ^2.0.4
-  freezed: ^0.14.2
-  import_sorter: ^4.4.3
+  build_runner: ^2.1.2
+  freezed: ^0.14.5
+  import_sorter: ^4.6.0
   lints: ^1.0.1
 
 import_sorter:
