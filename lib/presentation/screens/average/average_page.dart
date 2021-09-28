@@ -26,6 +26,19 @@ class AveragePage extends StatelessWidget {
             return const Text('Yükleniyor..');
           },
         ),
+        actions: [
+          BlocBuilder<AverageCalcCubit, AverageCalcState>(
+            builder: (BuildContext context, AverageCalcState state) {
+              if (state.status == AverageCalcStatus.success) {
+                return IconButton(
+                    onPressed: () =>
+                        context.read<AverageCalcCubit>().resetLectureGrades(),
+                    icon: const Icon(Icons.refresh));
+              }
+              return Container();
+            },
+          ),
+        ],
       ),
       body: BlocBuilder<AverageLoadingCubit, AverageLoadingState>(
         builder: (BuildContext context, AverageLoadingState state) {
