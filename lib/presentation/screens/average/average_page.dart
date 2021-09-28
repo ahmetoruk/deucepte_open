@@ -18,7 +18,10 @@ class AveragePage extends StatelessWidget {
         title: BlocBuilder<AverageCalcCubit, AverageCalcState>(
           builder: (BuildContext context, AverageCalcState state) {
             if (state.status == AverageCalcStatus.success) {
-              return Text(state.finalAverage.toStringAsFixed(2));
+              return state.initialAverage != state.finalAverage
+                  ? Text(
+                      '${state.initialAverage.toStringAsFixed(2)} > ${state.finalAverage.toStringAsFixed(2)}')
+                  : Text(state.finalAverage.toStringAsFixed(2));
             }
             return const Text('Yükleniyor..');
           },

@@ -23,22 +23,25 @@ class AverageCalcState extends Equatable {
       {this.status = AverageCalcStatus.initial,
       this.semesters = const <Semester>[],
       this.lectures = const <Lecture>[],
+      this.initialAverage = 0,
       this.finalAverage = 0});
 
   final AverageCalcStatus status;
   final List<Semester> semesters;
   final List<Lecture> lectures;
-  final double finalAverage;
+  final double initialAverage, finalAverage;
 
   AverageCalcState copyWith(
       {AverageCalcStatus? status,
       List<Semester>? semesters,
       List<Lecture>? lectures,
+      double? initialAverage,
       double? finalAverage}) {
     return AverageCalcState(
         status: status ?? this.status,
         semesters: semesters ?? this.semesters,
         lectures: lectures ?? this.lectures,
+        initialAverage: initialAverage ?? this.initialAverage,
         finalAverage: finalAverage ?? this.finalAverage);
   }
 
@@ -57,6 +60,7 @@ class AverageCalcCubit extends Cubit<AverageCalcState> {
               status: AverageCalcStatus.success,
               semesters: averageResult.newSemesterList,
               lectures: state.lectures,
+              initialAverage: averageResult.cumAvg,
               finalAverage: averageResult.cumAvg));
         }
       },
@@ -75,7 +79,7 @@ class AverageCalcCubit extends Cubit<AverageCalcState> {
         .toList();
     final averageResult =
         calcSemesterAverages(semesters: state.semesters, lectures: lectures);
-    emit(AverageCalcState(
+    emit(state.copyWith(
         status: AverageCalcStatus.success,
         semesters: averageResult.newSemesterList,
         lectures: lectures,
