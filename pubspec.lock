@@ -171,6 +171,13 @@ packages:
       relative: true
     source: path
     version: "1.0.0"
+  deu_pos_api:
+    dependency: "direct main"
+    description:
+      path: "packages/deu_pos_api"
+      relative: true
+    source: path
+    version: "0.0.1"
   dio:
     dependency: transitive
     description:

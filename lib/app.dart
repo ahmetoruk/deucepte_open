@@ -1,3 +1,6 @@
+import 'package:deu_pos_api/deu_pos_api.dart';
+import 'package:deucepte_open/data/repositories/deu_pos_repository.dart';
+import 'package:deucepte_open/logic/cubits/refectory/deu_pos_cubit.dart';
 import 'package:flutter/material.dart';
 
 import 'package:deu_api/deu_api.dart' show DeuApi;
@@ -30,11 +33,13 @@ import 'package:deucepte_open/presentation/screens/login/login_page.dart';
 class App extends StatelessWidget {
   const App(
     this.api,
+    this.deuPosApi,
     this.sharedPreferences, {
     Key? key,
   }) : super(key: key);
 
   final DeuApi api;
+  final DeuPosApi deuPosApi;
   final SharedPreferences sharedPreferences;
 
   @override
@@ -70,6 +75,12 @@ class App extends StatelessWidget {
         RepositoryProvider<ScheduleRepository>(
           create: (BuildContext context) => ScheduleRepository(
             api.schedule,
+            sharedPreferences,
+          ),
+        ),
+        RepositoryProvider<DeuPosRepository>(
+          create: (BuildContext context) => DeuPosRepository(
+            deuPosApi,
             sharedPreferences,
           ),
         ),
@@ -137,6 +148,11 @@ class App extends StatelessWidget {
                   context.read<AverageLoadingCubit>(),
                   sharedPreferences,
                 )..getLineChartData(),
+              ),
+              BlocProvider<DeuPosDetailCubit>(
+                create: (BuildContext context) => DeuPosDetailCubit(
+                  context.read<DeuPosRepository>(),
+                )..getDeuPosDetail(),
               ),
             ],
             child: ThemeProvider(

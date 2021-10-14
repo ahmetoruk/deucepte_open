@@ -1,3 +1,4 @@
+import 'package:deu_pos_api/deu_pos_api.dart';
 import 'package:flutter/material.dart';
 
 import 'package:background_fetch/background_fetch.dart';
@@ -11,6 +12,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final sharedPreferences = await SharedPreferences.getInstance();
   final api = DeuApi.create(sharedPreferences);
-  runApp(App(api, sharedPreferences));
+  final deuPosApi = DeuPosApi();
+  runApp(App(api, deuPosApi, sharedPreferences));
   BackgroundFetch.registerHeadlessTask(headlessNotificationFetch);
 }

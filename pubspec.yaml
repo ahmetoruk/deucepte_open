@@ -29,6 +29,8 @@ dependencies:
   shimmer: ^2.0.0
   deu_api:
     path: packages/deu_api/
+  deu_pos_api:
+    path: packages/deu_pos_api/
 
 dev_dependencies:
   flutter_test:

@@ -1,3 +1,4 @@
+import 'package:deucepte_open/presentation/screens/home_page/dashboard_page/refectory_pos_card.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -63,6 +64,7 @@ class DashboardPage extends StatelessWidget {
           ScheduleTableCard(),
           NotificationsCard(),
           MessagesCard(),
+          RefectoryPosCard()
         ],
       ),
     );
