@@ -178,6 +178,13 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
+  deu_refectory_meals_api:
+    dependency: "direct main"
+    description:
+      path: "packages/deu_refectory_meals_api"
+      relative: true
+    source: path
+    version: "0.0.1"
   dio:
     dependency: transitive
     description:

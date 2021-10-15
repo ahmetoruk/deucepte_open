@@ -1,6 +1,9 @@
 import 'package:deu_pos_api/deu_pos_api.dart';
+import 'package:deu_refectory_meals_api/deu_refectory_meals_api.dart';
 import 'package:deucepte_open/data/repositories/deu_pos_repository.dart';
+import 'package:deucepte_open/data/repositories/deu_refectory_meals_repository.dart';
 import 'package:deucepte_open/logic/cubits/refectory/deu_pos_cubit.dart';
+import 'package:deucepte_open/logic/cubits/refectory/deu_refectory_cubit.dart';
 import 'package:flutter/material.dart';
 
 import 'package:deu_api/deu_api.dart' show DeuApi;
@@ -34,12 +37,14 @@ class App extends StatelessWidget {
   const App(
     this.api,
     this.deuPosApi,
+    this.deuRefectoryMealsApi,
     this.sharedPreferences, {
     Key? key,
   }) : super(key: key);
 
   final DeuApi api;
   final DeuPosApi deuPosApi;
+  final DeuRefectoryMealsApi deuRefectoryMealsApi;
   final SharedPreferences sharedPreferences;
 
   @override
@@ -83,6 +88,10 @@ class App extends StatelessWidget {
             deuPosApi,
             sharedPreferences,
           ),
+        ),
+        RepositoryProvider<DeuRefectoryMealsRepository>(
+          create: (BuildContext context) =>
+              DeuRefectoryMealsRepository(deuRefectoryMealsApi),
         ),
       ],
       child: Builder(
@@ -153,6 +162,11 @@ class App extends StatelessWidget {
                 create: (BuildContext context) => DeuPosDetailCubit(
                   context.read<DeuPosRepository>(),
                 )..getDeuPosDetail(),
+              ),
+              BlocProvider<DeuRefectoryDetailCubit>(
+                create: (BuildContext context) => DeuRefectoryDetailCubit(
+                  context.read<DeuRefectoryMealsRepository>(),
+                )..getRefectoryDays(),
               ),
             ],
             child: ThemeProvider(

@@ -31,6 +31,8 @@ dependencies:
     path: packages/deu_api/
   deu_pos_api:
     path: packages/deu_pos_api/
+  deu_refectory_meals_api:
+    path: packages/deu_refectory_meals_api/
 
 dev_dependencies:
   flutter_test:

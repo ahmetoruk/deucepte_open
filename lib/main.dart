@@ -1,4 +1,5 @@
 import 'package:deu_pos_api/deu_pos_api.dart';
+import 'package:deu_refectory_meals_api/deu_refectory_meals_api.dart';
 import 'package:flutter/material.dart';
 
 import 'package:background_fetch/background_fetch.dart';
@@ -13,6 +14,8 @@ void main() async {
   final sharedPreferences = await SharedPreferences.getInstance();
   final api = DeuApi.create(sharedPreferences);
   final deuPosApi = DeuPosApi();
-  runApp(App(api, deuPosApi, sharedPreferences));
+  final deuRefectoryMealsApi = DeuRefectoryMealsApi();
+  await deuRefectoryMealsApi.initilizateLocale();
+  runApp(App(api, deuPosApi, deuRefectoryMealsApi, sharedPreferences));
   BackgroundFetch.registerHeadlessTask(headlessNotificationFetch);
 }
