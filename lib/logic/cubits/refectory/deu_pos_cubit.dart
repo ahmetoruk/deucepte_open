@@ -25,7 +25,7 @@ class DeuPosDetailState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [status, BalanceInfo];
+  List<Object?> get props => [status, balanceInfo];
 }
 
 class DeuPosDetailCubit extends Cubit<DeuPosDetailState> {

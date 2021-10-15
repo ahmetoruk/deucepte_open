@@ -60,7 +60,7 @@ class RefectoryPosCard extends StatelessWidget {
 
             case DeuPosDetailStatus.failure:
               return const ListTile(
-                title: Text('Hata ders programı yüklenemedi!'),
+                title: Text('Hata bakiye ve haftalık yüklenemedi!'),
               );
           }
         },
