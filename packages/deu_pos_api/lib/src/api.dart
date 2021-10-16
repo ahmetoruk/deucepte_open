@@ -65,6 +65,6 @@ class DeuPosApi {
       weeklies.add(Weekly(date, weeklyDays));
     }
 
-    return BalanceInfo(credit, weeklies);
+    return BalanceInfo(credit, weeklies, balanceResponse.statusCode == 500);
   }
 }

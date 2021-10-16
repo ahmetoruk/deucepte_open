@@ -9,7 +9,7 @@ enum DeuPosDetailStatus { initial, loading, success, failure }
 class DeuPosDetailState extends Equatable {
   DeuPosDetailState(
       {this.status = DeuPosDetailStatus.initial, BalanceInfo? balanceInfo})
-      : balanceInfo = balanceInfo ?? BalanceInfo("", []);
+      : balanceInfo = balanceInfo ?? BalanceInfo("", [], false);
 
   final DeuPosDetailStatus status;
   final BalanceInfo balanceInfo;

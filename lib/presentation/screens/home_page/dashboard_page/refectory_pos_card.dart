@@ -45,16 +45,22 @@ class RefectoryPosCard extends StatelessWidget {
                   const Divider(
                     height: 0,
                   ),
-                  ...state.balanceInfo.weeklies.map(
-                    (final weekly) => Column(
-                      children: [
-                        WeeklyWidget(weekly),
-                        const Divider(
-                          height: 0,
-                        )
-                      ],
+                  if (state.balanceInfo.isWeekend)
+                    const ListTile(
+                      leading: Icon(Icons.warning),
+                      title: Text("Haftasonu haftalık yükleme gösterilemiyor!"),
+                    )
+                  else
+                    ...state.balanceInfo.weeklies.map(
+                      (final weekly) => Column(
+                        children: [
+                          WeeklyWidget(weekly),
+                          const Divider(
+                            height: 0,
+                          )
+                        ],
+                      ),
                     ),
-                  ),
                 ],
               );
 
