@@ -37,6 +37,7 @@ class DeuPosDetailCubit extends Cubit<DeuPosDetailState> {
   Future getDeuPosDetail() async {
     emit(state.copyWith(status: DeuPosDetailStatus.initial));
     try {
+      emit(state.copyWith(status: DeuPosDetailStatus.loading));
       final deuPosAccountBalanceInfo =
           await deuPosRepository.getAccountBalance();
       emit(state.copyWith(
