@@ -36,8 +36,10 @@ class DeuPosApi {
   }
 
   Future<BalanceInfo> getBalance() async {
-    final balanceResponse =
-        await client.get("https://pos.deu.edu.tr/page/index.php?p=account");
+    final balanceResponse = await client.get(
+      "https://pos.deu.edu.tr/page/index.php?p=account",
+      options: Options(validateStatus: (status) => status! <= 500),
+    );
     final accountHTML = html.parse(balanceResponse.data);
     final credit = accountHTML
         .querySelector("h3")!
@@ -63,6 +65,6 @@ class DeuPosApi {
       weeklies.add(Weekly(date, weeklyDays));
     }
 
-    return BalanceInfo(credit, weeklies);
+    return BalanceInfo(credit, weeklies, balanceResponse.statusCode == 500);
   }
 }

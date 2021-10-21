@@ -9,7 +9,7 @@ enum DeuPosDetailStatus { initial, loading, success, failure }
 class DeuPosDetailState extends Equatable {
   DeuPosDetailState(
       {this.status = DeuPosDetailStatus.initial, BalanceInfo? balanceInfo})
-      : balanceInfo = balanceInfo ?? BalanceInfo("", []);
+      : balanceInfo = balanceInfo ?? BalanceInfo("", [], false);
 
   final DeuPosDetailStatus status;
   final BalanceInfo balanceInfo;
@@ -37,6 +37,7 @@ class DeuPosDetailCubit extends Cubit<DeuPosDetailState> {
   Future getDeuPosDetail() async {
     emit(state.copyWith(status: DeuPosDetailStatus.initial));
     try {
+      emit(state.copyWith(status: DeuPosDetailStatus.loading));
       final deuPosAccountBalanceInfo =
           await deuPosRepository.getAccountBalance();
       emit(state.copyWith(
