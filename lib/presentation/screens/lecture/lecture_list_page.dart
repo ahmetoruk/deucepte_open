@@ -88,9 +88,10 @@ class _LectureListLoaded extends StatelessWidget {
   }
 
   void _onTapLecture(BuildContext context, Lecture lecture) async {
-    context.loaderOverlay.show();
+    final overlay = context.loaderOverlay;
+    overlay.show();
     await context.read<LectureDetailCubit>().getLectureDetail(lecture);
-    context.loaderOverlay.hide();
+    overlay.hide();
     Navigator.of(context).push<dynamic>(
       MaterialPageRoute<Widget>(
           builder: (BuildContext context) => const LectureDetailPage()),

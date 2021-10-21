@@ -176,16 +176,13 @@ class App extends StatelessWidget {
               child: ThemeConsumer(
                 child: Builder(builder: (context) {
                   return GlobalLoaderOverlay(
-                    overlayOpacity: 0,
+                    overlayColor: Colors.black,
+                    overlayOpacity: 0.1,
                     useDefaultLoading: false,
                     overlayWidget: Center(
-                      child: Opacity(
-                        opacity: 0.7,
-                        child: SpinKitThreeBounce(
-                          color:
-                              ThemeProvider.themeOf(context).data.accentColor,
-                          size: 30,
-                        ),
+                      child: SpinKitThreeBounce(
+                        color: ThemeProvider.themeOf(context).data.accentColor,
+                        size: 30,
                       ),
                     ),
                     child: MaterialApp(

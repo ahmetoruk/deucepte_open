@@ -70,11 +70,12 @@ class _MessageListLoaded extends StatelessWidget {
             subtitle: Text(message.sender),
             trailing: Text(message.date),
             onTap: () async {
-              context.loaderOverlay.show();
+              final overlay = context.loaderOverlay;
+              overlay.show();
               await context
                   .read<MessageDetailCubit>()
                   .getMessageDetail(message);
-              context.loaderOverlay.hide();
+              overlay.hide();
               Navigator.of(context).push<MaterialPageRoute>(
                 MaterialPageRoute(
                   builder: (BuildContext context) => const MessageDetailPage(),

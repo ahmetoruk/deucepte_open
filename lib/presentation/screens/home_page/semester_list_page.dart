@@ -73,9 +73,10 @@ class _SemesterListLoaded extends StatelessWidget {
   }
 
   void _onTapSemester(BuildContext context, Semester semester) async {
-    context.loaderOverlay.show();
+    final overlay = context.loaderOverlay;
+    overlay.show();
     await context.read<LectureListCubit>().getLectureList(semester);
-    context.loaderOverlay.hide();
+    overlay.hide();
     Navigator.of(context).push<dynamic>(
       MaterialPageRoute<Widget>(
         builder: (BuildContext context) => const LectureListPage(),

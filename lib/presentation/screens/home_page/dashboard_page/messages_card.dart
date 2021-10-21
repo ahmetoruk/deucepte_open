@@ -102,9 +102,10 @@ class _MessageListLoaded extends StatelessWidget {
   }
 
   void _onTapMessage(BuildContext context, Message message) async {
-    context.loaderOverlay.show();
+    final overlay = context.loaderOverlay;
+    overlay.show();
     await context.read<MessageDetailCubit>().getMessageDetail(message);
-    context.loaderOverlay.hide();
+    overlay.hide();
     Navigator.of(context).push<MaterialPageRoute>(
       MaterialPageRoute(
         builder: (BuildContext context) => const MessageDetailPage(),
