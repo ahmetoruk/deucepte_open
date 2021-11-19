@@ -126,7 +126,8 @@ class LectureNotificationListCubit extends Cubit<LectureNotificationListState> {
         for (final lectureGrade in notifyList) {
           await backgroundNotification.showNotification(null,
               title: lecture.metaData.name,
-              text: '${lectureGrade.name}: ${lectureGrade.note}');
+              text:
+                  '${lectureGrade.name}: ${lectureGrade.note} Sınıf ort: ${lectureGrade.classAverage}');
         }
       } else {
         newLectureNotifications.add(lectureNotification.copyWith());
