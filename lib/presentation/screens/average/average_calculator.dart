@@ -107,6 +107,16 @@ class _AverageCalcLoaded extends StatelessWidget {
                                 : semester.average!.toStringAsFixed(2),
                           ),
                         ),
+                        ListTile(
+                          title: const Text(
+                              'Notlandırılmamış dönem derslerini CC yap'),
+                          trailing: IconButton(
+                            icon: const Icon(Icons.refresh),
+                            onPressed: () => context
+                                .read<AverageCalcCubit>()
+                                .setAllSemesterLecturesToCC(semester),
+                          ),
+                        )
                       ],
                     ),
                   );
