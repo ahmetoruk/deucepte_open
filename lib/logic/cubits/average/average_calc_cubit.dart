@@ -102,6 +102,24 @@ class AverageCalcCubit extends Cubit<AverageCalcState> {
         finalAverage: averageResult.cumAvg));
   }
 
+  void setAllSemesterLecturesToCC(Semester semester) {
+    final updateLectures = state.lectures
+        .map((lectureMap) => lectureMap.copyWith(
+            finalGrade: lectureMap.metaData.semesterId == semester.id &&
+                    lectureMap.initialFinalGrade!.isEmpty &&
+                    lectureMap.metaData.metaGrade != 'B'
+                ? 'CC'
+                : lectureMap.finalGrade))
+        .toList();
+    final averageResult = calcSemesterAverages(
+        semesters: state.semesters, lectures: updateLectures);
+    emit(state.copyWith(
+        status: AverageCalcStatus.success,
+        semesters: averageResult.newSemesterList,
+        lectures: updateLectures,
+        finalAverage: averageResult.cumAvg));
+  }
+
   AverageResult calcSemesterAverages(
       {required List<Semester> semesters, required List<Lecture> lectures}) {
     final newSemesters = <Semester>[];
