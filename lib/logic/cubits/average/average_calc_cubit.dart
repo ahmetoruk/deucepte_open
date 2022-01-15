@@ -88,10 +88,8 @@ class AverageCalcCubit extends Cubit<AverageCalcState> {
 
   void resetLectureGrades() {
     final updateLectures = state.lectures
-        .map((lectureMap) => lectureMap.copyWith(
-            finalGrade: lectureMap.initialFinalGrade!.isNotEmpty
-                ? lectureMap.initialFinalGrade
-                : lectureMap.finalGrade))
+        .map((lectureMap) =>
+            lectureMap.copyWith(finalGrade: lectureMap.initialFinalGrade))
         .toList();
     final averageResult = calcSemesterAverages(
         semesters: state.semesters, lectures: updateLectures);
