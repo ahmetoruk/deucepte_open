@@ -43,9 +43,7 @@ macos/
 # Web related
 lib/generated_plugin_registrant.dart
 
-#generated
-*.freezed.dart
-*.g.dart
+
 
 # Symbolication related
 app.*.symbols
