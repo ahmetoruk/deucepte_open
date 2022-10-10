@@ -5,28 +5,21 @@ class CustomCard extends StatelessWidget {
       {Key? key, required this.title, this.actions, required this.content})
       : super(key: key);
 
-  final Widget title;
+  final String title;
   final List<Widget>? actions;
   final Widget content;
-
-  Widget cardHeader({required Widget title, List<Widget>? actions}) {
-    return ListTile(
-      title: title,
-      trailing: Row(
-        children: actions!,
-        mainAxisSize: MainAxisSize.min,
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Column(
         children: <Widget>[
-          cardHeader(
-            title: title,
-            actions: actions,
+          ListTile(
+            title: Text(title),
+            trailing: Row(
+              children: actions!,
+              mainAxisSize: MainAxisSize.min,
+            ),
           ),
           const Divider(
             height: 1,

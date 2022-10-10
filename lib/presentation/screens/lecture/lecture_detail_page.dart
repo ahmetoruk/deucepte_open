@@ -49,7 +49,7 @@ class LectureDetailPage extends StatelessWidget {
           },
         ),
         bottomNavigationBar: Container(
-          color: Theme.of(context).primaryColor.withOpacity(0.8),
+          color: Theme.of(context).colorScheme.secondary.withOpacity(0.8),
           child: const TabBar(
             indicatorColor: Colors.white,
             tabs: <Widget>[
@@ -106,7 +106,7 @@ class _LectureDetailLoaded extends StatelessWidget {
               ),
               Container(
                 width: double.maxFinite,
-                color: Theme.of(context).primaryColor.withOpacity(0.5),
+                color: Theme.of(context).colorScheme.secondary.withOpacity(0.5),
                 padding: const EdgeInsets.all(10),
                 child: Text(
                   lecture.statusText ?? 'Hata!',

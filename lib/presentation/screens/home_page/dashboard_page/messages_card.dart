@@ -19,10 +19,7 @@ class MessagesCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      title: const Text(
-        'Mesajlar',
-        style: TextStyle(fontWeight: FontWeight.bold),
-      ),
+      title: 'Mesajlar',
       actions: <Widget>[
         IconButton(
           icon: const Icon(Icons.refresh),

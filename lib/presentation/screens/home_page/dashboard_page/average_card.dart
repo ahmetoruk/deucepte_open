@@ -15,10 +15,7 @@ class AverageCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      title: const Text(
-        'Ortalama',
-        style: TextStyle(fontWeight: FontWeight.bold),
-      ),
+      title: 'Ortalama',
       actions: <Widget>[
         IconButton(
           icon: const Icon(
@@ -34,7 +31,10 @@ class AverageCard extends StatelessWidget {
       ],
       content: Column(
         children: <Widget>[
-          const LectureStatisticsLineChart(),
+          Padding(
+            padding: const EdgeInsets.only(left: 16),
+            child: const LectureStatisticsLineChart(),
+          ),
           const Divider(),
           Builder(
             builder: (BuildContext context) {

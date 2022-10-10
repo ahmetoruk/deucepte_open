@@ -16,7 +16,6 @@ dependencies:
   flutter_hooks: ^0.18.0
   equatable: ^2.0.3
   shared_preferences: ^2.0.8
-  theme_provider: ^0.5.0
   charts_flutter:
     git:
       url: https://github.com/google/charts.git
@@ -33,6 +32,7 @@ dependencies:
     path: packages/deu_pos_api/
   deu_refectory_meals_api:
     path: packages/deu_refectory_meals_api/
+  dynamic_color: ^1.5.4
 
 dev_dependencies:
   flutter_test:

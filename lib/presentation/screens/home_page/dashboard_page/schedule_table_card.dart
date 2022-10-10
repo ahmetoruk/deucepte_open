@@ -17,10 +17,7 @@ class ScheduleTableCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      title: const Text(
-        'Ders Programı',
-        style: TextStyle(fontWeight: FontWeight.bold),
-      ),
+      title: 'Ders Programı',
       actions: <Widget>[
         IconButton(
           icon: const Icon(Icons.refresh),
@@ -77,6 +74,7 @@ class _ScheduleCardLoaded extends StatelessWidget {
             ScheduleCard(
               tableList: tableList,
               time: time,
+              useCard: false,
               elevation: 0,
             ),
             const Divider(

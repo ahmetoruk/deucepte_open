@@ -13,10 +13,7 @@ class RefectoryPosCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      title: const Text(
-        'Yemekhane Bakiye ve Haftalık',
-        style: TextStyle(fontWeight: FontWeight.bold),
-      ),
+      title: 'Yemekhane Bakiye ve Haftalık',
       actions: <Widget>[
         IconButton(
           icon: const Icon(Icons.refresh),

@@ -1,9 +1,11 @@
 import 'package:deu_pos_api/deu_pos_api.dart';
 import 'package:deu_refectory_meals_api/deu_refectory_meals_api.dart';
+import 'package:deucepte_open/core/themes/themes.dart';
 import 'package:deucepte_open/data/repositories/deu_pos_repository.dart';
 import 'package:deucepte_open/data/repositories/deu_refectory_meals_repository.dart';
 import 'package:deucepte_open/logic/cubits/refectory/deu_pos_cubit.dart';
 import 'package:deucepte_open/logic/cubits/refectory/deu_refectory_cubit.dart';
+import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 
 import 'package:deu_api/deu_api.dart' show DeuApi;
@@ -11,9 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:theme_provider/theme_provider.dart';
 
-import 'package:deucepte_open/core/themes/themes.dart';
 import 'package:deucepte_open/data/repositories/average_repository.dart';
 import 'package:deucepte_open/data/repositories/lecture_notification_repository.dart';
 import 'package:deucepte_open/data/repositories/lecture_repository.dart';
@@ -169,30 +169,28 @@ class App extends StatelessWidget {
                 )..getRefectoryDays(),
               ),
             ],
-            child: ThemeProvider(
-              saveThemesOnChange: true,
-              loadThemeOnInit: true,
-              themes: themes,
-              child: ThemeConsumer(
-                child: Builder(builder: (context) {
-                  return GlobalLoaderOverlay(
-                    overlayColor: Colors.black,
-                    overlayOpacity: 0.1,
-                    useDefaultLoading: false,
-                    overlayWidget: Center(
-                      child: SpinKitThreeBounce(
-                        color: ThemeProvider.themeOf(context).data.accentColor,
-                        size: 30,
-                      ),
-                    ),
-                    child: MaterialApp(
-                      debugShowCheckedModeBanner: false,
-                      title: 'DEU Cepte',
-                      theme: ThemeProvider.themeOf(context).data,
-                      home: const LoginPage(),
-                    ),
-                  );
-                }),
+            child: DynamicColorBuilder(
+              builder: (ColorScheme? lightDynamic, ColorScheme? darkDynamic) =>
+                  GlobalLoaderOverlay(
+                overlayColor: Colors.black,
+                overlayOpacity: 0.1,
+                useDefaultLoading: false,
+                overlayWidget: Center(
+                  child: SpinKitThreeBounce(
+                    color: Colors.red,
+                    size: 30,
+                  ),
+                ),
+                child: MaterialApp(
+                  debugShowCheckedModeBanner: false,
+                  title: 'DEU Cepte',
+                  theme:
+                      ThemeData(useMaterial3: true, colorScheme: lightDynamic),
+                  darkTheme:
+                      ThemeData(useMaterial3: true, colorScheme: darkDynamic),
+                  themeMode: ThemeMode.system,
+                  home: const LoginPage(),
+                ),
               ),
             ),
           );

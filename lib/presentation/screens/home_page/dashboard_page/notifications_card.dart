@@ -14,10 +14,7 @@ class NotificationsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      title: const Text(
-        'Bildirimler',
-        style: TextStyle(fontWeight: FontWeight.bold),
-      ),
+      title: 'Bildirimler',
       actions: <Widget>[
         IconButton(
           icon: const Icon(Icons.refresh),

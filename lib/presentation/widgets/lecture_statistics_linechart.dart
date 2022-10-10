@@ -17,8 +17,8 @@ class LectureStatisticsLineChart extends StatelessWidget {
     return [
       charts.Series<Lecture, num>(
         id: 'Grades',
-        colorFn: (_, __) =>
-            charts.ColorUtil.fromDartColor(Theme.of(context).accentColor),
+        colorFn: (_, __) => charts.ColorUtil.fromDartColor(
+            Theme.of(context).colorScheme.primary),
         domainFn: (Lecture lecture, int? index) => index ?? 0,
         measureFn: (Lecture lecture, _) {
           if (lecture.finalGrade != null) {
