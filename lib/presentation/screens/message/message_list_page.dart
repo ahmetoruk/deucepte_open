@@ -1,3 +1,4 @@
+import 'package:deucepte_open/presentation/widgets/message_list_tile.dart';
 import 'package:flutter/material.dart';
 
 import 'package:deu_api/deu_api.dart' show Message;
@@ -60,28 +61,25 @@ class _MessageListLoaded extends StatelessWidget {
       onRefresh: () async =>
           await context.read<MessageListCubit>().getMessageList(refresh: true),
       child: ListView.separated(
-        separatorBuilder: (BuildContext context, int index) => const Divider(),
+        separatorBuilder: (BuildContext context, int index) => SizedBox(
+          height: 4.0,
+        ),
         itemCount: messages.length,
         itemBuilder: (BuildContext context, int index) {
           final message = messages[index];
-          return ListTile(
-            leading: const Icon(Icons.mail),
-            title: Text(message.title),
-            subtitle: Text(message.sender),
-            trailing: Text(message.date),
-            onTap: () async {
-              final overlay = context.loaderOverlay;
-              overlay.show();
-              await context
-                  .read<MessageDetailCubit>()
-                  .getMessageDetail(message);
-              overlay.hide();
-              Navigator.of(context).push<MaterialPageRoute>(
-                MaterialPageRoute(
-                  builder: (BuildContext context) => const MessageDetailPage(),
-                ),
-              );
-            },
+          return Card(
+            child: MessageListTile(
+              message: message,
+              onTap: () async {
+                Navigator.of(context).push<MaterialPageRoute>(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) =>
+                        const MessageDetailPage(),
+                  ),
+                );
+                context.read<MessageDetailCubit>().getMessageDetail(message);
+              },
+            ),
           );
         },
       ),

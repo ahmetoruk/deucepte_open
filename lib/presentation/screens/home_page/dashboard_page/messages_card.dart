@@ -1,3 +1,4 @@
+import 'package:deucepte_open/presentation/widgets/message_list_tile.dart';
 import 'package:flutter/material.dart';
 
 import 'package:deu_api/deu_api.dart' show Message;
@@ -72,11 +73,8 @@ class _MessageListLoaded extends StatelessWidget {
     return Column(
       children: <Widget>[
         ...firstThreeMessages.map<Widget>(
-          (Message message) => ListTile(
-            leading: const Icon(Icons.mail),
-            title: Text(message.title),
-            subtitle: Text(message.sender),
-            trailing: Text(message.date),
+          (Message message) => MessageListTile(
+            message: message,
             onTap: () => _onTapMessage(context, message),
           ),
         ),

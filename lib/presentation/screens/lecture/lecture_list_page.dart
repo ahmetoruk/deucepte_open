@@ -70,32 +70,63 @@ class _LectureListLoaded extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      separatorBuilder: (BuildContext context, int index) => const Divider(
-        height: 0,
+      separatorBuilder: (BuildContext context, int index) => const SizedBox(
+        height: 4.0,
       ),
       itemCount: lectures.length,
       itemBuilder: (BuildContext context, int index) {
         final lecture = lectures[index];
-        return ListTile(
-          leading: const Icon(Icons.library_books),
-          title: Text(lecture.metaData.name),
-          subtitle: Text(lecture.metaData.success.successText),
-          trailing: Text(lecture.metaData.metaGrade),
-          onTap: () => _onTapLecture(context, lecture),
+
+        return Card(
+          child: InkWell(
+            borderRadius: BorderRadius.circular(12),
+            onTap: () => _onTapLecture(context, lecture),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          lecture.metaData.name,
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                        if (lecture.metaData.metaGrade.isNotEmpty)
+                          Text("Not: " + lecture.metaData.metaGrade,
+                              style: Theme.of(context).textTheme.bodySmall),
+                        Text(
+                          "Durum: " + lecture.metaData.success.successText,
+                          style: Theme.of(context).textTheme.bodySmall,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Icon(Icons.arrow_forward_ios),
+                ],
+              ),
+            ),
+          ),
         );
+        // return ListTile(
+        //   leading: const Icon(Icons.library_books),
+        //   title: Text(lecture.metaData.name),
+        //   subtitle: Text(lecture.metaData.success.successText),
+        //   trailing: Text(lecture.metaData.metaGrade),
+        //   onTap: () => _onTapLecture(context, lecture),
+        // );
       },
     );
   }
 
   void _onTapLecture(BuildContext context, Lecture lecture) async {
-    final overlay = context.loaderOverlay;
-    overlay.show();
-    await context.read<LectureDetailCubit>().getLectureDetail(lecture);
-    overlay.hide();
     Navigator.of(context).push<dynamic>(
       MaterialPageRoute<Widget>(
           builder: (BuildContext context) => const LectureDetailPage()),
     );
+    context.read<LectureDetailCubit>().getLectureDetail(lecture);
   }
 }
 

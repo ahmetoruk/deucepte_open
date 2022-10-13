@@ -12,10 +12,10 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  flutter_bloc: ^7.3.0
-  flutter_hooks: ^0.18.0
-  equatable: ^2.0.3
-  shared_preferences: ^2.0.8
+  flutter_bloc: ^8.1.1
+  flutter_hooks: ^0.18.5+1
+  equatable: ^2.0.5
+  shared_preferences: ^2.0.15
   charts_flutter:
     git:
       url: https://github.com/google/charts.git

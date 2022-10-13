@@ -169,19 +169,17 @@ class App extends StatelessWidget {
                 )..getRefectoryDays(),
               ),
             ],
-            child: DynamicColorBuilder(
-              builder: (ColorScheme? lightDynamic, ColorScheme? darkDynamic) =>
-                  GlobalLoaderOverlay(
-                overlayColor: Colors.black,
-                overlayOpacity: 0.1,
-                useDefaultLoading: false,
-                overlayWidget: Center(
-                  child: SpinKitThreeBounce(
-                    color: Colors.red,
-                    size: 30,
-                  ),
-                ),
-                child: MaterialApp(
+            child: GlobalLoaderOverlay(
+              overlayColor: Colors.black,
+              overlayOpacity: 0.1,
+              useDefaultLoading: true,
+              overlayWidget: const Center(
+                child: CircularProgressIndicator(),
+              ),
+              child: DynamicColorBuilder(
+                builder:
+                    (ColorScheme? lightDynamic, ColorScheme? darkDynamic) =>
+                        MaterialApp(
                   debugShowCheckedModeBanner: false,
                   title: 'DEU Cepte',
                   theme:
