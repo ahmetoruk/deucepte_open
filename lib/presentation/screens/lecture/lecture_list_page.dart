@@ -70,6 +70,7 @@ class _LectureListLoaded extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
+      padding: const EdgeInsets.all(4.0),
       separatorBuilder: (BuildContext context, int index) => const SizedBox(
         height: 4.0,
       ),

@@ -47,21 +47,37 @@ class _LectureNotificationLoaded extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      separatorBuilder: (BuildContext context, int index) => const Divider(),
-      itemCount: lectureNotificationList.length,
-      itemBuilder: (BuildContext context, int index) {
-        final lectureNotification = lectureNotificationList[index];
-        return ListTile(
-          title: Text(lectureNotification.lecture.metaData.name),
-          trailing: IconButton(
-            icon: const Icon(Icons.delete),
-            onPressed: () => context
-                .read<LectureNotificationListCubit>()
-                .removeNotification(lectureNotification.lecture),
-          ),
-        );
-      },
-    );
+    return lectureNotificationList.isEmpty
+        ? Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.notifications_off,
+                  size: 100,
+                  color: Theme.of(context).disabledColor,
+                ),
+                Text('Aktif bildirim yok.',
+                    style: Theme.of(context).textTheme.titleLarge),
+              ],
+            ),
+          )
+        : ListView.separated(
+            separatorBuilder: (BuildContext context, int index) =>
+                const Divider(),
+            itemCount: lectureNotificationList.length,
+            itemBuilder: (BuildContext context, int index) {
+              final lectureNotification = lectureNotificationList[index];
+              return ListTile(
+                title: Text(lectureNotification.lecture.metaData.name),
+                trailing: IconButton(
+                  icon: const Icon(Icons.delete),
+                  onPressed: () => context
+                      .read<LectureNotificationListCubit>()
+                      .removeNotification(lectureNotification.lecture),
+                ),
+              );
+            },
+          );
   }
 }

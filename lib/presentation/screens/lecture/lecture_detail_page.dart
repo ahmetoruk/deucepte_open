@@ -72,10 +72,23 @@ class _LectureDetailLoaded extends StatelessWidget {
     return RefreshIndicator(
       onRefresh: () =>
           context.read<LectureDetailCubit>().getLectureDetail(lecture),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            ListView.separated(
+      child: !showDetails && lecture.gradeList!.isEmpty
+          ? Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.bar_chart,
+                    size: 100,
+                    color: Theme.of(context).disabledColor,
+                  ),
+                  Text('Dersin detayları girilmemiş.',
+                      style: Theme.of(context).textTheme.titleLarge),
+                ],
+              ),
+            )
+          : ListView.separated(
+              padding: const EdgeInsets.all(4.0),
               shrinkWrap: true,
               separatorBuilder: (BuildContext context, int index) =>
                   const SizedBox(
@@ -164,9 +177,6 @@ class _LectureDetailLoaded extends StatelessWidget {
                 // );
               },
             ),
-          ],
-        ),
-      ),
     );
   }
 }
