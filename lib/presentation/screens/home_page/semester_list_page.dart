@@ -57,30 +57,47 @@ class _SemesterListLoaded extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      separatorBuilder: (BuildContext context, int index) => const Divider(
-        height: 0,
+      padding: const EdgeInsets.all(4.0),
+      separatorBuilder: (BuildContext context, int index) => const SizedBox(
+        height: 3,
       ),
       itemCount: semesters.length,
       itemBuilder: (BuildContext context, int index) {
         final semester = semesters[index];
-        return ListTile(
-          title: Text(semester.name),
-          leading: const Icon(Icons.date_range),
-          onTap: () => _onTapSemester(context, semester),
+
+        return Card(
+          child: InkWell(
+            borderRadius: BorderRadius.circular(12),
+            onTap: () => _onTapSemester(context, semester),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                children: [
+                  Column(
+                    children: [
+                      Text(
+                        semester.name,
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                    ],
+                  ),
+                  const Spacer(),
+                  const Icon(Icons.arrow_forward_ios),
+                ],
+              ),
+            ),
+          ),
         );
       },
     );
   }
 
   void _onTapSemester(BuildContext context, Semester semester) async {
-    final overlay = context.loaderOverlay;
-    overlay.show();
-    await context.read<LectureListCubit>().getLectureList(semester);
-    overlay.hide();
     Navigator.of(context).push<dynamic>(
       MaterialPageRoute<Widget>(
         builder: (BuildContext context) => const LectureListPage(),
       ),
     );
+    context.read<LectureListCubit>().getLectureList(semester);
   }
 }

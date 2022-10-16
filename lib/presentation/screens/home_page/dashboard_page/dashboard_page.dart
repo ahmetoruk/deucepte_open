@@ -4,7 +4,6 @@ import 'package:deucepte_open/presentation/screens/home_page/dashboard_page/refe
 import 'package:deucepte_open/presentation/screens/home_page/dashboard_page/refectory_pos_card.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:theme_provider/theme_provider.dart';
 
 import 'package:deucepte_open/logic/cubits/auth/auth_cubit.dart';
 import 'package:deucepte_open/presentation/screens/home_page/dashboard_page/average_card.dart';
@@ -33,13 +32,6 @@ class DashboardPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Anasayfa'),
         actions: <Widget>[
-          IconButton(
-            onPressed: () => showDialog<bool>(
-              context: context,
-              builder: (_) => ThemeConsumer(child: ThemeDialog()),
-            ),
-            icon: const Icon(Icons.color_lens),
-          ),
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () => showAlertDialog(

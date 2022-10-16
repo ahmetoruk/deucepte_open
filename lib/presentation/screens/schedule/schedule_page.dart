@@ -20,7 +20,11 @@ class SchedulePage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Ders Programı'),
-          bottom: const TabBar(
+          bottom: TabBar(
+            indicatorColor: Theme.of(context).colorScheme.secondary,
+            labelColor: Theme.of(context).colorScheme.primary,
+            unselectedLabelColor:
+                Theme.of(context).colorScheme.primary.withOpacity(0.4),
             tabs: <Widget>[
               Tab(
                 text: 'Pzt',

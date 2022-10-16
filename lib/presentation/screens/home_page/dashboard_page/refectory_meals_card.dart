@@ -7,7 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:deucepte_open/presentation/widgets/shimmer_loading.dart';
 import 'package:deucepte_open/presentation/widgets/custom_card.dart';
 
-
 extension DateFilter on List<RefectoryDay> {
   // ignore: unnecessary_this
   Iterable<RefectoryDay> get currentRefectoryDays => this.where(
@@ -25,10 +24,7 @@ class RefectoryMealsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      title: const Text(
-        'Yemekhane Yemekler',
-        style: TextStyle(fontWeight: FontWeight.bold),
-      ),
+      title: 'Yemekhane Yemekler',
       actions: <Widget>[
         IconButton(
           icon: const Icon(Icons.refresh),
