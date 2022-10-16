@@ -182,10 +182,19 @@ class App extends StatelessWidget {
                         MaterialApp(
                   debugShowCheckedModeBanner: false,
                   title: 'DEU Cepte',
-                  theme:
-                      ThemeData(useMaterial3: true, colorScheme: lightDynamic),
-                  darkTheme:
-                      ThemeData(useMaterial3: true, colorScheme: darkDynamic),
+                  theme: ThemeData(
+                    useMaterial3: true,
+                    colorScheme: lightDynamic ??
+                        ColorScheme.fromSeed(
+                            seedColor: const Color.fromARGB(255, 32, 42, 68)),
+                  ),
+                  darkTheme: ThemeData(
+                    useMaterial3: true,
+                    colorScheme: darkDynamic ??
+                        ColorScheme.fromSeed(
+                            brightness: Brightness.dark,
+                            seedColor: Colors.blue.shade800),
+                  ),
                   themeMode: ThemeMode.system,
                   home: const LoginPage(),
                 ),

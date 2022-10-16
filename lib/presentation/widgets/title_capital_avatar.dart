@@ -11,11 +11,12 @@ class TitleCapitalAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
+      backgroundColor: Theme.of(context).colorScheme.secondary,
       radius: 24,
       child: Text(
         letter,
         style: TextStyle(
-          color: Theme.of(context).colorScheme.secondary,
+          color: Theme.of(context).colorScheme.onSecondary,
           fontSize: 20,
           fontWeight: FontWeight.bold,
         ),
