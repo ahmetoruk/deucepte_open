@@ -3,7 +3,7 @@ description:
 
 publish_to: 'none'
 
-version: 4.1.2+2053
+version: 4.2.0+2054
 
 environment:
   sdk: ">=2.13.0 <3.0.0"
