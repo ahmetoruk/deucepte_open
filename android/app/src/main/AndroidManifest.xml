@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.ahmetoruk.deucepte_open">
    <application
-        android:label="deucepte_open"
+        android:label="DEU Cepte"
         android:name="${applicationName}"
         tools:replace="android:label"
         android:icon="@mipmap/ic_launcher">
