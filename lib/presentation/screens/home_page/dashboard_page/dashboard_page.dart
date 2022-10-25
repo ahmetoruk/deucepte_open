@@ -54,7 +54,7 @@ class DashboardPage extends StatelessWidget {
         ],
       ),
       body: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 2),
+        padding: const EdgeInsets.symmetric(horizontal: 4),
         children: <Widget>[
           Row(
             children: [
@@ -81,8 +81,6 @@ class DashboardPage extends StatelessWidget {
           const AverageCard(),
           const ScheduleTableCard(),
           const MessagesCard(),
-          const RefectoryPosCard(),
-          const RefectoryMealsCard()
         ],
       ),
     );

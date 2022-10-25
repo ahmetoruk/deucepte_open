@@ -20,7 +20,6 @@ class LectureDetailPage extends HookWidget {
     final showDetailsState = useState<bool>(false);
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
         title: const _LectureDetailListTitle(),
         actions: const <Widget>[
           _NotificationIcon(),
@@ -107,22 +106,26 @@ class _LectureDetailLoaded extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    lectureDetail.name,
-                                    style:
-                                        Theme.of(context).textTheme.titleMedium,
-                                  ),
-                                ],
-                              ),
-                            ),
                             Text(
-                              lectureDetail.detail,
-                              style: Theme.of(context).textTheme.titleMedium,
+                              lectureDetail.name,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium
+                                  ?.copyWith(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onSurface),
                             ),
+                            const SizedBox(
+                              width: 16.0,
+                            ),
+                            Flexible(
+                              child: Text(
+                                lectureDetail.detail,
+                                textAlign: TextAlign.end,
+                                style: Theme.of(context).textTheme.titleMedium,
+                              ),
+                            )
                           ],
                         ),
                       ),
@@ -141,11 +144,15 @@ class _LectureDetailLoaded extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    lectureGrade.name,
-                                    style:
-                                        Theme.of(context).textTheme.titleMedium,
-                                  ),
+                                  Text(lectureGrade.name,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleMedium
+                                          ?.copyWith(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .onSurface,
+                                          )),
                                   if (lectureGrade.classAverage.isNotEmpty)
                                     Text(
                                       "Sınıf Ortalaması: " +

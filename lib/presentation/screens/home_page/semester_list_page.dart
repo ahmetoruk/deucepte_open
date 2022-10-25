@@ -1,3 +1,4 @@
+import 'package:deucepte_open/presentation/widgets/forward_icon.dart';
 import 'package:flutter/material.dart';
 
 import 'package:deu_api/deu_api.dart' show Semester;
@@ -77,12 +78,17 @@ class _SemesterListLoaded extends StatelessWidget {
                     children: [
                       Text(
                         semester.name,
-                        style: Theme.of(context).textTheme.titleMedium,
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleMedium
+                            ?.copyWith(
+                              color: Theme.of(context).colorScheme.onSurface,
+                            ),
                       ),
                     ],
                   ),
                   const Spacer(),
-                  const Icon(Icons.arrow_forward_ios),
+                  const ForwardIcon(),
                 ],
               ),
             ),

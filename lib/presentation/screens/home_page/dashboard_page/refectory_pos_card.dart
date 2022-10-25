@@ -13,7 +13,7 @@ class RefectoryPosCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      title: 'Yemekhane Bakiye ve Haftalık',
+      title: 'Bakiye',
       actions: <Widget>[
         IconButton(
           icon: const Icon(Icons.refresh),
@@ -34,9 +34,24 @@ class RefectoryPosCard extends StatelessWidget {
               return Column(
                 children: [
                   ListTile(
-                    leading: const Icon(Icons.credit_card),
-                    title: Text(
-                      "${state.balanceInfo.credit}₺",
+                    leading: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.credit_card,
+                          color: Theme.of(context)
+                              .colorScheme
+                              .onSurface
+                              .withOpacity(0.4),
+                        ),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        Text(
+                          "${state.balanceInfo.credit}₺",
+                          style: Theme.of(context).textTheme.bodyText1,
+                        ),
+                      ],
                     ),
                   ),
                   const Divider(
