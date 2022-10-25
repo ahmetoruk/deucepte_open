@@ -3,7 +3,7 @@ description:
 
 publish_to: 'none'
 
-version: 4.2.0+2055
+version: 4.2.0+2056
 
 environment:
   sdk: ">=2.13.0 <3.0.0"
@@ -33,6 +33,7 @@ dependencies:
   deu_refectory_meals_api:
     path: packages/deu_refectory_meals_api/
   dynamic_color: ^1.5.4
+  package_info_plus: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -41,6 +42,9 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  
+  assets:
+  - assets/images/logo_white.png
 
 import_sorter:
   comments: false 

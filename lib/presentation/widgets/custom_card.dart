@@ -15,7 +15,13 @@ class CustomCard extends StatelessWidget {
       child: Column(
         children: <Widget>[
           ListTile(
-            title: Text(title),
+            title: Text(
+              title,
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w900,
+                  color:
+                      Theme.of(context).colorScheme.onSurface.withOpacity(0.8)),
+            ),
             trailing: Row(
               children: actions!,
               mainAxisSize: MainAxisSize.min,

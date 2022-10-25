@@ -1,3 +1,4 @@
+import 'package:deucepte_open/presentation/screens/home_page/refectory_page.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -36,6 +37,7 @@ class MainPage extends HookWidget {
           children: const <Widget>[
             DashboardPage(),
             SemesterListPage(),
+            RefectoryPage()
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
@@ -50,6 +52,10 @@ class MainPage extends HookWidget {
             BottomNavigationBarItem(
               icon: Icon(Icons.library_books),
               label: 'Derslerim',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.restaurant),
+              label: 'Yemekhane',
             ),
           ],
         ),

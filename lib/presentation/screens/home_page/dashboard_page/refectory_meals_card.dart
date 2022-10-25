@@ -23,38 +23,63 @@ class RefectoryMealsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomCard(
-      title: 'Yemekhane Yemekler',
-      actions: <Widget>[
-        IconButton(
-          icon: const Icon(Icons.refresh),
-          onPressed: () =>
-              context.read<DeuRefectoryDetailCubit>().getRefectoryDays(),
-        )
-      ],
-      content: BlocBuilder<DeuRefectoryDetailCubit, DeuRefectoryDetailState>(
-        builder: (BuildContext context, DeuRefectoryDetailState state) {
-          switch (state.status) {
-            case DeuRefectoryDetailStatus.initial:
-              return Container();
-            case DeuRefectoryDetailStatus.loading:
-              return const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: ShimmerLoading(count: 1),
-              );
-            case DeuRefectoryDetailStatus.success:
-              return Column(
-                children: [
-                  ...state.refectoryDays.currentRefectoryDays.map(
-                    (e) => Column(
+    return BlocBuilder<DeuRefectoryDetailCubit, DeuRefectoryDetailState>(
+      builder: (BuildContext context, DeuRefectoryDetailState state) {
+        switch (state.status) {
+          case DeuRefectoryDetailStatus.initial:
+            return Container();
+          case DeuRefectoryDetailStatus.loading:
+            return const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: ShimmerLoading(count: 5),
+            );
+          case DeuRefectoryDetailStatus.success:
+            return Column(
+              children: [
+                ...state.refectoryDays.currentRefectoryDays.map(
+                  (e) => Card(
+                    child: Column(
                       children: [
                         ListTile(
-                          leading: const Icon(Icons.date_range),
-                          title: Text(
-                            e.date,
-                            style: const TextStyle(fontWeight: FontWeight.bold),
+                          leading: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(
+                                Icons.calendar_month,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .onSurface
+                                    .withOpacity(0.8),
+                              ),
+                              const SizedBox(
+                                width: 8,
+                              ),
+                              Text(
+                                e.date,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleMedium
+                                    ?.copyWith(
+                                      fontWeight: FontWeight.w900,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onSurface
+                                          .withOpacity(0.8),
+                                    ),
+                              )
+                            ],
                           ),
-                          subtitle: Text(e.kcal),
+                          trailing: Text(e.kcal,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium
+                                  ?.copyWith(
+                                    fontWeight: FontWeight.w900,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onSurface
+                                        .withOpacity(0.4),
+                                  )),
                         ),
                         const Divider(
                           height: 0,
@@ -63,28 +88,42 @@ class RefectoryMealsCard extends StatelessWidget {
                           (e) => Column(
                             children: [
                               ListTile(
-                                leading:
-                                    const Icon(Icons.restaurant_menu_outlined),
-                                title: Text(e.title),
+                                leading: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Icon(Icons.restaurant_rounded,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onSurface
+                                            .withOpacity(0.4)),
+                                    SizedBox(
+                                      width: 8,
+                                    ),
+                                    Text(e.title,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyLarge),
+                                  ],
+                                ),
                               ),
                               const Divider(
                                 height: 0,
                               )
                             ],
                           ),
-                        )
+                        ),
                       ],
                     ),
-                  )
-                ],
-              );
-            case DeuRefectoryDetailStatus.failure:
-              return const ListTile(
-                title: Text('Hata yemek listesi yüklenemedi!'),
-              );
-          }
-        },
-      ),
+                  ),
+                ),
+              ],
+            );
+          case DeuRefectoryDetailStatus.failure:
+            return const ListTile(
+              title: Text('Hata yemek listesi yüklenemedi!'),
+            );
+        }
+      },
     );
   }
 }

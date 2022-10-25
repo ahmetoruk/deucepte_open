@@ -1,3 +1,4 @@
+import 'package:deucepte_open/presentation/widgets/forward_icon.dart';
 import 'package:flutter/material.dart';
 
 import 'package:deu_api/deu_api.dart' show Lecture;
@@ -93,7 +94,12 @@ class _LectureListLoaded extends StatelessWidget {
                       children: [
                         Text(
                           lecture.metaData.name,
-                          style: Theme.of(context).textTheme.titleMedium,
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium
+                              ?.copyWith(
+                                color: Theme.of(context).colorScheme.onSurface,
+                              ),
                         ),
                         if (lecture.metaData.metaGrade.isNotEmpty)
                           Text("Not: " + lecture.metaData.metaGrade,
@@ -105,7 +111,7 @@ class _LectureListLoaded extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Icon(Icons.arrow_forward_ios),
+                  const ForwardIcon()
                 ],
               ),
             ),

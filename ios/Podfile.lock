@@ -1,5 +1,5 @@
 PODS:
-  - background_fetch (1.0.3):
+  - background_fetch (1.1.1):
     - Flutter
   - Flutter (1.0.0)
   - flutter_local_notifications (0.0.1):
@@ -24,7 +24,7 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/shared_preferences_ios/ios"
 
 SPEC CHECKSUMS:
-  background_fetch: 8fa13640fc6e658a7c2e9a2dbc07af8650af215c
+  background_fetch: ef7bc433c96131e4f284d8616d2e0d4e18fa6af4
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   flutter_local_notifications: 0c0b1ae97e741e1521e4c1629a459d04b9aec743
   shared_preferences_ios: 548a61f8053b9b8a49ac19c1ffbc8b92c50d68ad
