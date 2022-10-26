@@ -40,9 +40,15 @@ class LineChartCubit extends Cubit<LineChartState> {
   LineChartCubit(this.averageLoadingCubit, this.sharedPreferences)
       : super(LineChartState()) {
     subscription = averageLoadingCubit.stream.listen(
-      (state) {
-        if (state.status == AverageLoadingStatus.success) {
+      (avarageState) {
+        if (avarageState.status == AverageLoadingStatus.success) {
           getLineChartData();
+        } else {
+          emit(
+            state.copyWith(
+              status: LineChartStatus.loading,
+            ),
+          );
         }
       },
     );

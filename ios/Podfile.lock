@@ -4,6 +4,8 @@ PODS:
   - Flutter (1.0.0)
   - flutter_local_notifications (0.0.1):
     - Flutter
+  - package_info_plus (0.4.5):
+    - Flutter
   - shared_preferences_ios (0.0.1):
     - Flutter
 
@@ -11,6 +13,7 @@ DEPENDENCIES:
   - background_fetch (from `.symlinks/plugins/background_fetch/ios`)
   - Flutter (from `Flutter`)
   - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
+  - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
   - shared_preferences_ios (from `.symlinks/plugins/shared_preferences_ios/ios`)
 
 EXTERNAL SOURCES:
@@ -20,6 +23,8 @@ EXTERNAL SOURCES:
     :path: Flutter
   flutter_local_notifications:
     :path: ".symlinks/plugins/flutter_local_notifications/ios"
+  package_info_plus:
+    :path: ".symlinks/plugins/package_info_plus/ios"
   shared_preferences_ios:
     :path: ".symlinks/plugins/shared_preferences_ios/ios"
 
@@ -27,6 +32,7 @@ SPEC CHECKSUMS:
   background_fetch: ef7bc433c96131e4f284d8616d2e0d4e18fa6af4
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   flutter_local_notifications: 0c0b1ae97e741e1521e4c1629a459d04b9aec743
+  package_info_plus: 6c92f08e1f853dc01228d6f553146438dafcd14e
   shared_preferences_ios: 548a61f8053b9b8a49ac19c1ffbc8b92c50d68ad
 
 PODFILE CHECKSUM: ef19549a9bc3046e7bb7d2fab4d021637c0c58a3
