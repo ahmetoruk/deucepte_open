@@ -31,21 +31,33 @@ class AverageCard extends StatelessWidget {
       ],
       content: Column(
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(left: 16),
-            child: const LectureStatisticsLineChart(),
-          ),
-          const Divider(),
           Builder(
             builder: (BuildContext context) {
               final lineChartCubit = context.watch<LineChartCubit>();
               final state = lineChartCubit.state;
-              if (state.status == LineChartStatus.success) {
+              if (state.status == LineChartStatus.loading) {
+                return const Center(
+                  child: Padding(
+                    padding: EdgeInsets.all(16.0),
+                    child: CircularProgressIndicator(),
+                  ),
+                );
+              } else if (state.status == LineChartStatus.success) {
                 final name = state.selectedLecture.metaData.name;
                 final finalGrade = state.selectedLecture.finalGrade;
-                return Padding(
-                  padding: const EdgeInsets.all(3),
-                  child: Text(finalGrade == null ? name : '$name: $finalGrade'),
+                return Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16),
+                      child: const LectureStatisticsLineChart(),
+                    ),
+                    const Divider(),
+                    Padding(
+                      padding: const EdgeInsets.all(3),
+                      child: Text(
+                          finalGrade == null ? name : '$name: $finalGrade'),
+                    ),
+                  ],
                 );
               }
               return Container();
