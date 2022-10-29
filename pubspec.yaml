@@ -3,7 +3,7 @@ description:
 
 publish_to: "none"
 
-version: 4.2.0+2057
+version: 4.2.1+2058
 
 environment:
   sdk: ">=2.13.0 <3.0.0"
@@ -34,6 +34,7 @@ dependencies:
     path: packages/deu_refectory_meals_api/
   dynamic_color: ^1.5.4
   package_info_plus: ^3.0.1
+  pdfx: ^2.3.0
 
 dev_dependencies:
   flutter_test:

@@ -12,15 +12,19 @@ import 'package:deucepte_open/core/services/background_notification/background_f
 
 late PackageInfo packageInfo;
 
+late DeuApi deuApi;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   packageInfo = await PackageInfo.fromPlatform();
 
   final sharedPreferences = await SharedPreferences.getInstance();
-  final api = DeuApi.create(sharedPreferences);
+  deuApi = DeuApi.create(
+    sharedPreferences,
+  );
   final deuPosApi = DeuPosApi();
   final deuRefectoryMealsApi = DeuRefectoryMealsApi();
   await deuRefectoryMealsApi.initilizateLocale();
-  runApp(App(api, deuPosApi, deuRefectoryMealsApi, sharedPreferences));
+  runApp(App(deuApi, deuPosApi, deuRefectoryMealsApi, sharedPreferences));
   BackgroundFetch.registerHeadlessTask(headlessNotificationFetch);
 }
