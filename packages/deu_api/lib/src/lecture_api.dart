@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:html/parser.dart' as html;
 
 import 'package:deu_api/src/api.dart';
@@ -101,5 +104,12 @@ class LectureApi {
         detailList: newDetails,
         finalGrade: letterNote,
         initialFinalGrade: letterNote);
+  }
+
+  Future<Uint8List> fetchTranscript() async {
+    final response = await client.post(
+        "https://debis.deu.edu.tr/OgrenciIsleri/Rapor/ogrenci_bazli_listeler/en_yeni_transcript/transcript.php",
+        options: Options(responseType: ResponseType.bytes));
+    return response.data;
   }
 }
