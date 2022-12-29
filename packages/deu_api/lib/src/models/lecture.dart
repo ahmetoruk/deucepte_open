@@ -18,6 +18,7 @@ class Lecture with _$Lecture {
       String? finalGrade,
       String? initialFinalGrade,
       @Default(false) bool duplicated,
+      @Default(false) bool disabled,
       List<LectureGrade>? gradeList,
       List<LectureDetail>? detailList}) = _Lecture;
 

@@ -28,6 +28,7 @@ class _$LectureTearOff {
       String? finalGrade,
       String? initialFinalGrade,
       bool duplicated = false,
+      bool disabled = false,
       List<LectureGrade>? gradeList,
       List<LectureDetail>? detailList}) {
     return _Lecture(
@@ -37,6 +38,7 @@ class _$LectureTearOff {
       finalGrade: finalGrade,
       initialFinalGrade: initialFinalGrade,
       duplicated: duplicated,
+      disabled: disabled,
       gradeList: gradeList,
       detailList: detailList,
     );
@@ -58,6 +60,7 @@ mixin _$Lecture {
   String? get finalGrade => throw _privateConstructorUsedError;
   String? get initialFinalGrade => throw _privateConstructorUsedError;
   bool get duplicated => throw _privateConstructorUsedError;
+  bool get disabled => throw _privateConstructorUsedError;
   List<LectureGrade>? get gradeList => throw _privateConstructorUsedError;
   List<LectureDetail>? get detailList => throw _privateConstructorUsedError;
 
@@ -77,6 +80,7 @@ abstract class $LectureCopyWith<$Res> {
       String? finalGrade,
       String? initialFinalGrade,
       bool duplicated,
+      bool disabled,
       List<LectureGrade>? gradeList,
       List<LectureDetail>? detailList});
 
@@ -99,6 +103,7 @@ class _$LectureCopyWithImpl<$Res> implements $LectureCopyWith<$Res> {
     Object? finalGrade = freezed,
     Object? initialFinalGrade = freezed,
     Object? duplicated = freezed,
+    Object? disabled = freezed,
     Object? gradeList = freezed,
     Object? detailList = freezed,
   }) {
@@ -126,6 +131,10 @@ class _$LectureCopyWithImpl<$Res> implements $LectureCopyWith<$Res> {
       duplicated: duplicated == freezed
           ? _value.duplicated
           : duplicated // ignore: cast_nullable_to_non_nullable
+              as bool,
+      disabled: disabled == freezed
+          ? _value.disabled
+          : disabled // ignore: cast_nullable_to_non_nullable
               as bool,
       gradeList: gradeList == freezed
           ? _value.gradeList
@@ -158,6 +167,7 @@ abstract class _$LectureCopyWith<$Res> implements $LectureCopyWith<$Res> {
       String? finalGrade,
       String? initialFinalGrade,
       bool duplicated,
+      bool disabled,
       List<LectureGrade>? gradeList,
       List<LectureDetail>? detailList});
 
@@ -182,6 +192,7 @@ class __$LectureCopyWithImpl<$Res> extends _$LectureCopyWithImpl<$Res>
     Object? finalGrade = freezed,
     Object? initialFinalGrade = freezed,
     Object? duplicated = freezed,
+    Object? disabled = freezed,
     Object? gradeList = freezed,
     Object? detailList = freezed,
   }) {
@@ -210,6 +221,10 @@ class __$LectureCopyWithImpl<$Res> extends _$LectureCopyWithImpl<$Res>
           ? _value.duplicated
           : duplicated // ignore: cast_nullable_to_non_nullable
               as bool,
+      disabled: disabled == freezed
+          ? _value.disabled
+          : disabled // ignore: cast_nullable_to_non_nullable
+              as bool,
       gradeList: gradeList == freezed
           ? _value.gradeList
           : gradeList // ignore: cast_nullable_to_non_nullable
@@ -232,6 +247,7 @@ class _$_Lecture with DiagnosticableTreeMixin implements _Lecture {
       this.finalGrade,
       this.initialFinalGrade,
       this.duplicated = false,
+      this.disabled = false,
       this.gradeList,
       this.detailList});
 
@@ -251,6 +267,9 @@ class _$_Lecture with DiagnosticableTreeMixin implements _Lecture {
   @JsonKey(defaultValue: false)
   @override
   final bool duplicated;
+  @JsonKey(defaultValue: false)
+  @override
+  final bool disabled;
   @override
   final List<LectureGrade>? gradeList;
   @override
@@ -258,7 +277,7 @@ class _$_Lecture with DiagnosticableTreeMixin implements _Lecture {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Lecture(metaData: $metaData, statusText: $statusText, credit: $credit, finalGrade: $finalGrade, initialFinalGrade: $initialFinalGrade, duplicated: $duplicated, gradeList: $gradeList, detailList: $detailList)';
+    return 'Lecture(metaData: $metaData, statusText: $statusText, credit: $credit, finalGrade: $finalGrade, initialFinalGrade: $initialFinalGrade, duplicated: $duplicated, disabled: $disabled, gradeList: $gradeList, detailList: $detailList)';
   }
 
   @override
@@ -272,6 +291,7 @@ class _$_Lecture with DiagnosticableTreeMixin implements _Lecture {
       ..add(DiagnosticsProperty('finalGrade', finalGrade))
       ..add(DiagnosticsProperty('initialFinalGrade', initialFinalGrade))
       ..add(DiagnosticsProperty('duplicated', duplicated))
+      ..add(DiagnosticsProperty('disabled', disabled))
       ..add(DiagnosticsProperty('gradeList', gradeList))
       ..add(DiagnosticsProperty('detailList', detailList));
   }
@@ -297,6 +317,9 @@ class _$_Lecture with DiagnosticableTreeMixin implements _Lecture {
             (identical(other.duplicated, duplicated) ||
                 const DeepCollectionEquality()
                     .equals(other.duplicated, duplicated)) &&
+            (identical(other.disabled, disabled) ||
+                const DeepCollectionEquality()
+                    .equals(other.disabled, disabled)) &&
             (identical(other.gradeList, gradeList) ||
                 const DeepCollectionEquality()
                     .equals(other.gradeList, gradeList)) &&
@@ -314,6 +337,7 @@ class _$_Lecture with DiagnosticableTreeMixin implements _Lecture {
       const DeepCollectionEquality().hash(finalGrade) ^
       const DeepCollectionEquality().hash(initialFinalGrade) ^
       const DeepCollectionEquality().hash(duplicated) ^
+      const DeepCollectionEquality().hash(disabled) ^
       const DeepCollectionEquality().hash(gradeList) ^
       const DeepCollectionEquality().hash(detailList);
 
@@ -336,6 +360,7 @@ abstract class _Lecture implements Lecture {
       String? finalGrade,
       String? initialFinalGrade,
       bool duplicated,
+      bool disabled,
       List<LectureGrade>? gradeList,
       List<LectureDetail>? detailList}) = _$_Lecture;
 
@@ -353,6 +378,8 @@ abstract class _Lecture implements Lecture {
   String? get initialFinalGrade => throw _privateConstructorUsedError;
   @override
   bool get duplicated => throw _privateConstructorUsedError;
+  @override
+  bool get disabled => throw _privateConstructorUsedError;
   @override
   List<LectureGrade>? get gradeList => throw _privateConstructorUsedError;
   @override

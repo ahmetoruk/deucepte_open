@@ -125,7 +125,9 @@ class AverageCalcCubit extends Cubit<AverageCalcState> {
     for (final semester in semesters) {
       var semesterResult = 0.0;
       var totalCredit = 0.0, totalEarnedCredit = 0.0;
-      for (final lecture in lectures.filterBySemester(semester)) {
+      for (final lecture in lectures
+          .filterBySemester(semester)
+          .where((element) => !element.disabled)) {
         if (lecture.finalGrade != '--') {
           final letterIndex = letterGradeList.indexOf(lecture.finalGrade!);
           final lectureCredit = lecture.credit!;
@@ -147,5 +149,37 @@ class AverageCalcCubit extends Cubit<AverageCalcState> {
   Future<void> close() async {
     await subscription?.cancel();
     await super.close();
+  }
+
+  void updateCredit(Lecture lecture, double value) {
+    final lectures = state.lectures
+        .map((lectureMap) =>
+            lectureMap.metaData.uniqueId == lecture.metaData.uniqueId
+                ? lectureMap.copyWith(credit: value)
+                : lectureMap)
+        .toList();
+    final averageResult =
+        calcSemesterAverages(semesters: state.semesters, lectures: lectures);
+    emit(state.copyWith(
+        status: AverageCalcStatus.success,
+        semesters: averageResult.newSemesterList,
+        lectures: lectures,
+        finalAverage: averageResult.cumAvg));
+  }
+
+  void toggleLecture(Lecture lecture) {
+    final lectures = state.lectures
+        .map((lectureMap) =>
+            lectureMap.metaData.uniqueId == lecture.metaData.uniqueId
+                ? lectureMap.copyWith(disabled: !lectureMap.disabled)
+                : lectureMap)
+        .toList();
+    final averageResult =
+        calcSemesterAverages(semesters: state.semesters, lectures: lectures);
+    emit(state.copyWith(
+        status: AverageCalcStatus.success,
+        semesters: averageResult.newSemesterList,
+        lectures: lectures,
+        finalAverage: averageResult.cumAvg));
   }
 }
