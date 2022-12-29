@@ -14,6 +14,7 @@ _$_Lecture _$$_LectureFromJson(Map<String, dynamic> json) => _$_Lecture(
       finalGrade: json['finalGrade'] as String?,
       initialFinalGrade: json['initialFinalGrade'] as String?,
       duplicated: json['duplicated'] as bool? ?? false,
+      disabled: json['disabled'] as bool? ?? false,
       gradeList: (json['gradeList'] as List<dynamic>?)
           ?.map((e) => LectureGrade.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -30,6 +31,7 @@ Map<String, dynamic> _$$_LectureToJson(_$_Lecture instance) =>
       'finalGrade': instance.finalGrade,
       'initialFinalGrade': instance.initialFinalGrade,
       'duplicated': instance.duplicated,
+      'disabled': instance.disabled,
       'gradeList': instance.gradeList,
       'detailList': instance.detailList,
     };

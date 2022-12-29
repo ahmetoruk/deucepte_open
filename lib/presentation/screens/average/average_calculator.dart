@@ -40,8 +40,9 @@ class _AverageCalcLoaded extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final nonSelectedLectureCount =
-        lectures.where((element) => element.finalGrade! == '--').length;
+    final nonSelectedLectureCount = lectures
+        .where((element) => element.finalGrade! == '--' && element.disabled)
+        .length;
     return Column(
       children: [
         Expanded(
@@ -52,72 +53,134 @@ class _AverageCalcLoaded extends StatelessWidget {
                 final semesterLectures = lectures.filterBySemester(semester);
                 if (semesterLectures.isNotEmpty) {
                   return Card(
-                    child: Column(
-                      children: <Widget>[
-                        ...semesterLectures.map<Widget>(
-                          (Lecture lecture) => Column(
-                            children: <Widget>[
-                              ListTile(
-                                leading: Icon(
-                                  Icons.library_books,
-                                  color: lecture.averageColor,
-                                ),
-                                title: Text(
-                                  lecture.metaData.name +
-                                      (lecture.finalGrade !=
-                                              lecture.initialFinalGrade
-                                          ? ' [${lecture.initialFinalGrade!.isNotEmpty ? lecture.initialFinalGrade : '--'}]'
-                                          : ''),
-                                ),
-                                subtitle: Text('Kredi: ${lecture.credit}'),
-                                trailing: DropdownButton<String>(
-                                  underline: Container(),
-                                  onChanged: (String? newGrade) => context
-                                      .read<AverageCalcCubit>()
-                                      .updateGrade(lecture, newGrade!),
-                                  value: lecture.finalGrade!.isNotEmpty
-                                      ? lecture.finalGrade
-                                      : '--',
-                                  items: letterGradeList
-                                      .map(
-                                        (String grade) =>
-                                            DropdownMenuItem<String>(
-                                          value: grade,
-                                          child: Text(
-                                            grade,
-                                            style:
-                                                const TextStyle(fontSize: 17),
-                                          ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: Column(
+                        children: <Widget>[
+                          ...semesterLectures.map<Widget>(
+                            (Lecture lecture) => Column(
+                              children: <Widget>[
+                                Opacity(
+                                  opacity: !lecture.disabled ? 1 : 0.7,
+                                  child: ListTile(
+                                    title: Text(
+                                      lecture.metaData.name +
+                                          (lecture.finalGrade !=
+                                                  lecture.initialFinalGrade
+                                              ? ' [${lecture.initialFinalGrade!.isNotEmpty ? lecture.initialFinalGrade : '--'}]'
+                                              : ''),
+                                    ),
+                                    subtitle: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Text(
+                                              "Kredi:",
+                                            ),
+                                            SizedBox(
+                                              width: 10,
+                                            ),
+                                            DropdownButton<double>(
+                                              underline: Container(),
+                                              onChanged: (double? newGrade) {
+                                                context
+                                                    .read<AverageCalcCubit>()
+                                                    .updateCredit(
+                                                        lecture, newGrade!);
+                                              },
+                                              value: lecture.credit,
+                                              items: List.generate(
+                                                  13, (index) => index).map(
+                                                (int note) {
+                                                  final grade = note * 0.5;
+                                                  return DropdownMenuItem<
+                                                      double>(
+                                                    value: grade,
+                                                    child: Text(
+                                                      grade.toString(),
+                                                      style: const TextStyle(
+                                                          fontSize: 17),
+                                                    ),
+                                                  );
+                                                },
+                                              ).toList(),
+                                            ),
+                                            Spacer(),
+                                            TextButton(
+                                                onPressed: () {
+                                                  context
+                                                      .read<AverageCalcCubit>()
+                                                      .toggleLecture(lecture);
+                                                },
+                                                child: Text(
+                                                  lecture.disabled
+                                                      ? 'Etkinleştir'
+                                                      : 'Devre dışı bırak',
+                                                  style: TextStyle(
+                                                    color: lecture.disabled
+                                                        ? Colors.green
+                                                        : Colors.red,
+                                                  ),
+                                                ))
+                                          ],
                                         ),
-                                      )
-                                      .toList(),
+                                        Text(lecture.statusText!,
+                                            style: TextStyle(
+                                                color: lecture.averageColor)),
+                                      ],
+                                    ),
+                                    trailing: DropdownButton<String>(
+                                      underline: Container(),
+                                      onChanged: (String? newGrade) => context
+                                          .read<AverageCalcCubit>()
+                                          .updateGrade(lecture, newGrade!),
+                                      value: lecture.finalGrade!.isNotEmpty
+                                          ? lecture.finalGrade
+                                          : '--',
+                                      items: letterGradeList
+                                          .map(
+                                            (String grade) =>
+                                                DropdownMenuItem<String>(
+                                              value: grade,
+                                              child: Text(
+                                                grade,
+                                                style: const TextStyle(
+                                                    fontSize: 17),
+                                              ),
+                                            ),
+                                          )
+                                          .toList(),
+                                    ),
+                                  ),
                                 ),
-                              ),
-                              const Divider(
-                                height: 1,
-                              )
-                            ],
+                                const Divider(
+                                  height: 5,
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-                        ListTile(
-                          title: const Text('Dönem ortalaması'),
-                          trailing: Text(
-                            semester.average == null
-                                ? ''
-                                : semester.average!.toStringAsFixed(2),
+                          ListTile(
+                            title: const Text('Dönem ortalaması'),
+                            trailing: Text(
+                              semester.average == null
+                                  ? ''
+                                  : semester.average!.toStringAsFixed(2),
+                            ),
                           ),
-                        ),
-                        ListTile(
-                          title: const Text(
-                              'Notlandırılmamış dönem derslerini CC yap'),
-                          trailing: IconButton(
-                            icon: const Icon(Icons.refresh),
-                            onPressed: () => context
-                                .read<AverageCalcCubit>()
-                                .setAllSemesterLecturesToCC(semester),
-                          ),
-                        )
-                      ],
+                          ListTile(
+                            title: const Text(
+                                'Notlandırılmamış dönem derslerini CC yap'),
+                            trailing: IconButton(
+                              icon: const Icon(Icons.refresh),
+                              onPressed: () => context
+                                  .read<AverageCalcCubit>()
+                                  .setAllSemesterLecturesToCC(semester),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   );
                 } else {

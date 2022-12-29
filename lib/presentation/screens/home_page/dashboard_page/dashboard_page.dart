@@ -15,6 +15,7 @@ import 'package:deucepte_open/presentation/screens/login/logout_page.dart';
 import 'package:deucepte_open/presentation/widgets/circle_progress_indicator.dart';
 import 'package:deucepte_open/presentation/widgets/dialog.dart';
 import 'package:pdfx/pdfx.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({
@@ -56,6 +57,33 @@ class DashboardPage extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 4),
         children: <Widget>[
+          InkWell(
+            onTap: () {
+              launchUrl(
+                  Uri.parse('https://linkedin.com/in/ahmet-örük-7244521a4'));
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Spacer(),
+                  Icon(
+                    Icons.person_add,
+                    color: Color(0xFF0A66C2),
+                    size: 24,
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text("LinkedIn profilim",
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleMedium
+                          ?.copyWith(fontWeight: FontWeight.w900))
+                ],
+              ),
+            ),
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

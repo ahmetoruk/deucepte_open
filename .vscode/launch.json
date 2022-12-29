@@ -1,0 +1,85 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "deucepte_open",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "deucepte_open (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "deucepte_open (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "deu_api",
+            "cwd": "packages/deu_api",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "deu_api (profile mode)",
+            "cwd": "packages/deu_api",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "deu_api (release mode)",
+            "cwd": "packages/deu_api",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "deu_pos_api",
+            "cwd": "packages/deu_pos_api",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "deu_pos_api (profile mode)",
+            "cwd": "packages/deu_pos_api",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "deu_pos_api (release mode)",
+            "cwd": "packages/deu_pos_api",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "deu_refectory_meals_api",
+            "cwd": "packages/deu_refectory_meals_api",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "deu_refectory_meals_api (profile mode)",
+            "cwd": "packages/deu_refectory_meals_api",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "deu_refectory_meals_api (release mode)",
+            "cwd": "packages/deu_refectory_meals_api",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
