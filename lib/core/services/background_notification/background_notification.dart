@@ -12,7 +12,7 @@ class BackgroundNotification {
     const _androidPlatformChannelSpecifics = AndroidNotificationDetails(
       'depcepte_lectureimp',
       'Not bildirim kanalı',
-      'DEUCepte Notlarınız açıklandığında bildirim alın.',
+      channelDescription: 'DEUCepte Notlarınız açıklandığında bildirim alın.',
       groupKey: 'com.ahmetoruk.deucepte_open.lecture',
       importance: Importance.max,
       color: Colors.purple,
