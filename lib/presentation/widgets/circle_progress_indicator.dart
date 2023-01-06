@@ -7,8 +7,8 @@ class CicleProgressIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SpinKitFadingCircle(
-      color: Colors.white,
+    return SpinKitFadingCircle(
+      color: Theme.of(context).colorScheme.primary,
     );
   }
 }

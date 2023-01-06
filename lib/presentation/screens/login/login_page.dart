@@ -36,7 +36,7 @@ class LoginPage extends HookWidget {
           builder: (BuildContext context, AuthenticationState state) {
             switch (state.status) {
               case AuthenticationStatus.authenticating:
-                return const Center(
+                return Center(
                   child: CicleProgressIndicator(),
                 );
               case AuthenticationStatus.authenticated:

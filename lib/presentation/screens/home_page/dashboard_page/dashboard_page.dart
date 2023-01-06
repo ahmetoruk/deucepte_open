@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:deucepte_open/logic/cubits/lecture/lecture_notification_cubit.dart';
@@ -14,8 +15,9 @@ import 'package:deucepte_open/presentation/screens/home_page/dashboard_page/sche
 import 'package:deucepte_open/presentation/screens/login/logout_page.dart';
 import 'package:deucepte_open/presentation/widgets/circle_progress_indicator.dart';
 import 'package:deucepte_open/presentation/widgets/dialog.dart';
+
 import 'package:pdfx/pdfx.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:share_plus/share_plus.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({
@@ -57,33 +59,93 @@ class DashboardPage extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 4),
         children: <Widget>[
-          InkWell(
-            onTap: () {
-              launchUrl(
-                  Uri.parse('https://linkedin.com/in/ahmet-örük-7244521a4'));
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Spacer(),
-                  Icon(
-                    Icons.person_add,
-                    color: Color(0xFF0A66C2),
-                    size: 24,
+          if (Platform.isAndroid)
+            GestureDetector(
+              onTap: () {
+                Share.share(
+                  "DEU Cepte uygulaması artık IOS'ta! https://apps.apple.com/tr/app/deu-cepte-dokuz-eyl%C3%BCl-%C3%BCni/id1662538631?l=tr",
+                );
+              },
+              child: Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.apple,
+                            size: 50,
+                            color: Theme.of(context)
+                                .colorScheme
+                                .secondary
+                                .withOpacity(0.70),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            "DEU Cepte Apple Store'da!",
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium
+                                ?.copyWith(fontWeight: FontWeight.w900),
+                          ),
+                          const Spacer(),
+                          Icon(
+                            Icons.share,
+                            size: 24,
+                            color: Theme.of(context)
+                                .colorScheme
+                                .secondary
+                                .withOpacity(0.80),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "Arkadaşlarına paylaşarak DEU Cepte'nin daha çok kullanılmasına yardımcı olabilirsin.",
+                        style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                            fontWeight: FontWeight.w500,
+                            color: Theme.of(context)
+                                .colorScheme
+                                .secondary
+                                .withOpacity(0.80)),
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text("LinkedIn profilim",
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleMedium
-                          ?.copyWith(fontWeight: FontWeight.w900))
-                ],
+                ),
               ),
             ),
-          ),
+          // InkWell(
+          //   onTap: () {
+          //     launchUrl(
+          //         Uri.parse('https://linkedin.com/in/ahmet-örük-7244521a4'));
+          //   },
+          //   child: Padding(
+          //     padding: const EdgeInsets.all(8.0),
+          //     child: Row(
+          //       children: [
+          //         Spacer(),
+          //         Icon(
+          //           Icons.person_add,
+          //           color: Color(0xFF0A66C2),
+          //           size: 24,
+          //         ),
+          //         SizedBox(
+          //           width: 10,
+          //         ),
+          //         Text("LinkedIn profilim",
+          //             style: Theme.of(context)
+          //                 .textTheme
+          //                 .titleMedium
+          //                 ?.copyWith(fontWeight: FontWeight.w900))
+          //       ],
+          //     ),
+          //   ),
+          // ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
