@@ -1,5 +1,5 @@
 PODS:
-  - background_fetch (1.1.1):
+  - background_fetch (1.1.2):
     - Flutter
   - device_info_plus (0.0.1):
     - Flutter
@@ -12,6 +12,8 @@ PODS:
     - Flutter
   - shared_preferences_ios (0.0.1):
     - Flutter
+  - url_launcher_ios (0.0.1):
+    - Flutter
 
 DEPENDENCIES:
   - background_fetch (from `.symlinks/plugins/background_fetch/ios`)
@@ -21,6 +23,7 @@ DEPENDENCIES:
   - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
   - pdfx (from `.symlinks/plugins/pdfx/ios`)
   - shared_preferences_ios (from `.symlinks/plugins/shared_preferences_ios/ios`)
+  - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
 
 EXTERNAL SOURCES:
   background_fetch:
@@ -37,15 +40,18 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/pdfx/ios"
   shared_preferences_ios:
     :path: ".symlinks/plugins/shared_preferences_ios/ios"
+  url_launcher_ios:
+    :path: ".symlinks/plugins/url_launcher_ios/ios"
 
 SPEC CHECKSUMS:
-  background_fetch: ef7bc433c96131e4f284d8616d2e0d4e18fa6af4
+  background_fetch: aaf8fc9d1da7f04e5373aabd4bb239704a5be6eb
   device_info_plus: e5c5da33f982a436e103237c0c85f9031142abed
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   flutter_local_notifications: 0c0b1ae97e741e1521e4c1629a459d04b9aec743
   package_info_plus: 6c92f08e1f853dc01228d6f553146438dafcd14e
   pdfx: 7b876b09de8b7a0bf444a4f82b439ffcff4ee1ec
   shared_preferences_ios: 548a61f8053b9b8a49ac19c1ffbc8b92c50d68ad
+  url_launcher_ios: 839c58cdb4279282219f5e248c3321761ff3c4de
 
 PODFILE CHECKSUM: ef19549a9bc3046e7bb7d2fab4d021637c0c58a3
 
