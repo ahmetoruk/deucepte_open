@@ -85,7 +85,7 @@ class DashboardPage extends StatelessWidget {
                             width: 10,
                           ),
                           Text(
-                            "DEU Cepte Apple Store'da!",
+                            "DEU Cepte App Store'da!",
                             style: Theme.of(context)
                                 .textTheme
                                 .titleMedium
